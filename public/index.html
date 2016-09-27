@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<main class="wrap">
+		<div class="container-fluid">
+			<h1>Welcome to Chat</h1>
+			<div id="messages"></div>
+			<div class="push"></div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<input type="text" id="message-box" class="form-control input-lg" placeholder="Write a msg">
+				</div>
+				<div class="col-sm-4">
+					<button class="btn btn-primary btn-lg btn-block" id="send-message-btn">Send</button>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+	<script>
+		var socket = io();
+
+		$('#send-message-btn').on('click', function () {
+			var msg = $('#message-box').val();
+			socket.emit('chat', msg);
+			$('#messages').append( $('<p>').text(msg) );
+			$('#message-box').val('');
+			return false;
+		});
+
+		socket.on('chat', function (msg) {
+			if (typeof msg === 'string') {
+			    $('#messages').append($('<p>').text(msg));
+			} else {
+				msg.reverse();
+				for(var el of msg){
+				    $('#messages').append($('<p>').text(el.content));
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
