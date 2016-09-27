@@ -23,7 +23,7 @@ serve.listen(env.port, function() {
 io.on('connection', function(socket){
 	console.log(('usr connected'));
 
-	MsgModel.find().sort('-_id').limit(7)
+	MsgModel.find().sort('-_id').limit(5)
 	    .then(function (result) {
 	        console.log("msgs sent");
 			socket.emit('chat', result);

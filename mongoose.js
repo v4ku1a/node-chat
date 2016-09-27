@@ -1,17 +1,17 @@
 'use strict';
 
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-module.exports = (dbUrl) => {
+module.exports = function(dbUrl) {
     mongoose.Promise = require('Q').Promise;
     mongoose.connect(dbUrl);
 
     mongoose.connection
-        .on('connected', () => console.log(`Mongoose default connection open`))
-        .on('error', (err) => console.log(`Mongoose default connection error  ${err}`))
-        .on('disconnected', () => console.log('Mongoose default connection disconnected'));
+        .on('connected', function() {console.log(`Mongoose default connection open`)})
+        .on('error', function(err) {console.log(`Mongoose default connection error  ${err}`)})
+        .on('disconnected', function() {console.log('Mongoose default connection disconnected')});
 
-    process.on('SIGINT', () => {
-        mongoose.connection.close(() => process.exit(0));
+    process.on('SIGINT', function() {
+        mongoose.connection.close(function() {process.exit(0)});
     });
 };
