@@ -1,0 +1,152 @@
+/*Made by me
+http://codepen.io/v4ku1a/pen/xOdjJq
+*/
+
+.circle {
+  margin: 20px auto;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 3px solid #414152;
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+.inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border: 2px solid #414152;
+  border-radius: 50%;
+  background: white;
+}
+
+.minutes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 30px;
+  margin-left: -2px;
+  margin-top: -30px;
+  background: #0079BD;
+  border-radius: 2px;
+  -webkit-transform-origin: 50% bottom;
+          transform-origin: 50% bottom;
+  -webkit-transition: -webkit-transform 0.6s linear;
+  transition: -webkit-transform 0.6s linear;
+  transition: transform 0.6s linear;
+  transition: transform 0.6s linear, -webkit-transform 0.6s linear;
+  -webkit-animation: arrow 2s infinite linear;
+          animation: arrow 2s infinite linear;
+}
+
+.hours {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 20px;
+  margin-left: -2px;
+  margin-top: -20px;
+  background: #0079BD;
+  border-radius: 2px;
+  -webkit-transform-origin: 50% bottom;
+          transform-origin: 50% bottom;
+  -webkit-transition: -webkit-transform 0.6s linear;
+  transition: -webkit-transform 0.6s linear;
+  transition: transform 0.6s linear;
+  transition: transform 0.6s linear, -webkit-transform 0.6s linear;
+  -webkit-animation: arrow 24s infinite linear;
+          animation: arrow 24s infinite linear;
+}
+
+.hour-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 6px;
+  margin-top: -42px;
+  margin-left: -2px;
+  padding-top: 36px;
+  box-sizing: content-box;
+  -webkit-transform-origin: 50% bottom;
+          transform-origin: 50% bottom;
+}
+.hour-mark:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #414152;
+  border-radius: 2px;
+}
+
+.hour-mark:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.hour-mark:nth-child(2) {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.hour-mark:nth-child(3) {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.hour-mark:nth-child(4) {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.hour-mark:nth-child(5) {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+
+.hour-mark:nth-child(6) {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.hour-mark:nth-child(7) {
+  -webkit-transform: rotate(315deg);
+          transform: rotate(315deg);
+}
+
+.hour-mark:nth-child(8) {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+@-webkit-keyframes arrow {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes arrow {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
